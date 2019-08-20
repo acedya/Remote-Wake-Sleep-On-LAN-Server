@@ -7,7 +7,7 @@ env:
   global:
   - DOCKER_REPO=kevinmarquis/acedya:testkma
 
--script:
+script:
   - docker run --rm --privileged multiarch/qemu-user-static:register --reset
   - docker build -t $DOCKER_REPO .
   - echo "$dockerhubpassword" | docker login -u "$dockerhubuser" --password-stdin
