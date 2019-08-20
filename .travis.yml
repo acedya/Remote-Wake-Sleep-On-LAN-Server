@@ -18,7 +18,7 @@ deploy:
   provider: script
   script: 
     ->
-    echo "$dockerhubpassword" | docker login -u "$dockerhubuser" --password-stdin
+    echo "$DOCKER_PASS" | docker login -u "$DOCKER_USER" --password-stdin
     docker push $DOCKER_REPO
   on:
     branch: master

@@ -29,7 +29,7 @@ RUN chmod u+s `which ping` && \
   #mv Remote-Wake-Sleep-On-LAN-Server/* /var/www/html && \
   #mv Remote-Wake-Sleep-On-LAN-Server/.htaccess /var/www/html && \
   #rm -rf Remote-Wake-Sleep-On-LAN-Server/ && \
-  #rm -f /var/www/html/index.html && \
+  rm -f /var/www/html/index.html && \
   #mv /var/www/html/config_sample.php /var/www/html/config.php && \
   service apache2 restart
 
