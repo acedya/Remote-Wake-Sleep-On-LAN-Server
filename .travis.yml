@@ -14,12 +14,8 @@ before_install:
 script:
   - docker build -t $DOCKER_REPO .
 
-deploy:
-  provider: script
-  script: 
-    echo $DOCKER_PASS
-    echo $DOCKER_USER
-    docker login -u $DOCKER_USER -p $DOCKER_PASS
-    docker push $DOCKER_REPO
-  on:
-    branch: master
+after_success:
+  - if [[ "$TRAVIS_BRANCH" == "master" ]]; then
+      docker login -u $DOCKER_USER -p $DOCKER_PASSWORD ;
+      docker push $DOCKER_REPO
+    fi
