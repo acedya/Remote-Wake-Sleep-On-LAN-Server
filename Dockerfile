@@ -30,5 +30,5 @@ RUN chmod u+s `which ping` && \
   rm -f /var/www/html/index.html && \
   mv /var/www/html/config_sample.php /var/www/html/config.php
 
-EXPOSE 81
+EXPOSE 80
 CMD apachectl -D FOREGROUND
