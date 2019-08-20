@@ -12,6 +12,10 @@ RUN apt-get update && apt-get install -y -q \
   apt-get clean && \
   rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /var/cache/apt/archive/*.deb
 
+COPY 000-default.conf /etc/apache2/sites-available/000-default.conf
+COPY config_sample.php /var/www/html/config.php
+COPY ["index.php", ".htaccess", "bootstrap", "ssl.conf", "/var/www/html/"]
+
 RUN chmod u+s `which ping` && \
   #git clone https://github.com/acedya/Remote-Wake-Sleep-On-LAN-Server.git && \
   echo "ServerName localhost" | tee /etc/apache2/conf-available/fqdn.conf && \
@@ -28,6 +32,6 @@ RUN chmod u+s `which ping` && \
   #rm -f /var/www/html/index.html && \
   #mv /var/www/html/config_sample.php /var/www/html/config.php && \
   service apache2 restart
-  
+
 EXPOSE 80
 CMD apachectl -D FOREGROUND
