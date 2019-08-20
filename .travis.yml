@@ -10,7 +10,7 @@ env:
   - secure: DOCKER_PASS
 
 script:
-  -  docker build -t $DOCKER_REPO .
+  -  docker build .
 deploy:
   provider: script
   script: echo "$dockerhubpassword" | docker login -u "$dockerhubuser" --password-stdin
