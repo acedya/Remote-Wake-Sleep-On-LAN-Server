@@ -23,13 +23,13 @@
 	$SLEEP_TIME = 5;
 
 	// This is the Name of the computers to appear in the drop down
-	$COMPUTER_NAME = array(${WOL_COMPUTER1},"computer2");
+	$COMPUTER_NAME = array(GetEnv(WOL_COMPUTER1),"computer2");
 
 	// This is the MAC address of the Network Interface on the computer you are trying to wake.
-	$COMPUTER_MAC = array(${WOL_COMPUTER1_MAC},"00:00:00:00:00:00");
+	$COMPUTER_MAC = array(GetEnv(WOL_COMPUTER1_MAC),"00:00:00:00:00:00");
 
 	// This is the LOCAL IP address of the computer you are trying to wake.  Use a reserved DHCP through your router's administration interface to ensure it doesn't change.
-	$COMPUTER_LOCAL_IP = array(${WOL_COMPUTER1_IP},"192.168.0.2");
+	$COMPUTER_LOCAL_IP = array(GetEnv(WOL_COMPUTER1_IP),"192.168.0.2");
 
 	// This is the Port being used by the Windows SleepOnLan Utility to initiate a Sleep State
 	// http://www.ireksoftware.com/SleepOnLan/
