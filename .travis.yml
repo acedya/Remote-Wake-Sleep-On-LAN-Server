@@ -19,7 +19,7 @@ deploy:
   script: 
     echo $DOCKER_PASS
     echo $DOCKER_USER
-    #echo "$DOCKER_PASS" | docker login -u "$DOCKER_USER" --password-stdin
-    #docker push $DOCKER_REPO
+    docker login -u $DOCKER_USER -p $DOCKER_PASS
+    docker push $DOCKER_REPO
   on:
     branch: master
