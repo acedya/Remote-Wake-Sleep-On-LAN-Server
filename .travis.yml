@@ -19,7 +19,7 @@ deploy:
   script: 
     echo $DOCKER_PASS
     echo $DOCKER_USER
-    echo "123456" | docker login -u "kmatest" --password-stdin
-    docker push $DOCKER_REPO
+    #echo "$DOCKER_PASS" | docker login -u "$DOCKER_USER" --password-stdin
+    #docker push $DOCKER_REPO
   on:
     branch: master
