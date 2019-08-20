@@ -11,6 +11,7 @@ script:
   -  docker build -t $DOCKER_REPO .
 deploy:
   provider: script
+  script: docker login -username $dockerhubuser -password $dockerhubpassword
   script: docker push $DOCKER_REPO
   on:
     branch: master
