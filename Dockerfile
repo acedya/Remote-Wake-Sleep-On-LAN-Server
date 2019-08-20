@@ -22,12 +22,12 @@ RUN chmod u+s `which ping` && \
   sed -i.bak "s/E_ALL & ~E_NOTICE & ~E_STRICT & ~E_DEPRECATED/error_reporting = E_ERROR/g" /etc/php/7.0/apache2/php.ini && \
   sed -i.bak "s/ServerSignature On/ServerSignature Off/g" /etc/apache2/conf-available/security.conf && \
   sed -i.bak "s/ServerTokens OS/ServerTokens Prod/g" /etc/apache2/conf-available/security.conf && \
-  service apache2 restart && 
   #mv Remote-Wake-Sleep-On-LAN-Server/* /var/www/html && \
   #mv Remote-Wake-Sleep-On-LAN-Server/.htaccess /var/www/html && \
   #rm -rf Remote-Wake-Sleep-On-LAN-Server/ && \
   #rm -f /var/www/html/index.html && \
-  #mv /var/www/html/config_sample.php /var/www/html/config.php
-
+  #mv /var/www/html/config_sample.php /var/www/html/config.php && \
+  service apache2 restart
+  
 EXPOSE 80
 CMD apachectl -D FOREGROUND
