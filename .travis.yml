@@ -16,6 +16,6 @@ script:
 
 after_success:
   - if [[ "$TRAVIS_BRANCH" == "master" ]]; then
-      docker login -u $DOCKER_USER -p $DOCKER_PASSWORD ;
+      docker login -u $DOCKER_USER -p $DOCKER_PASS;
       docker push $DOCKER_REPO;
     fi
