@@ -3,12 +3,22 @@ sudo: required
 language: bash
 services:
 - docker
+
 env:
   global:
   - DOCKER_REPO=kevinmarquis/acedya:testkma
 
-script:
+before_install:
   - docker run --rm --privileged multiarch/qemu-user-static:register --reset
+
+script:
   - docker build -t $DOCKER_REPO .
-  - echo "$dockerhubpassword" | docker login -u "$dockerhubuser" --password-stdin
-  - docker push $DOCKER_REPO
+
+deploy:
+  provider: script
+  script: 
+    ->
+    echo "$dockerhubpassword" | docker login -u "$dockerhubuser" --password-stdin
+    docker push $DOCKER_REPO
+  on:
+    branch: master
