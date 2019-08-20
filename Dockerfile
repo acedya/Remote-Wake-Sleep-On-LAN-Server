@@ -18,6 +18,7 @@ COPY ["index.php", ".htaccess", "bootstrap", "ssl.conf", "/var/www/html/"]
 
 RUN chmod u+s `which ping` && \
   echo "ServerName localhost" | tee /etc/apache2/conf-available/fqdn.conf && \
+  sed -i "s/80/8081/g" /etc/apache2/ports.conf /etc/apache2/sites-available/*.conf &&\
   a2enconf fqdn && \
   a2enmod headers && \
   sed -i.bak "s/expose_php = On/expose_php = Off/g" /etc/php/7.0/apache2/php.ini && \
@@ -27,5 +28,5 @@ RUN chmod u+s `which ping` && \
   rm -f /var/www/html/index.html && \
   service apache2 restart
 
-EXPOSE 80
+EXPOSE 8081
 CMD apachectl -D FOREGROUND
